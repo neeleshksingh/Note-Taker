@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Add from "./components/addnote";
+import Edit from "./components/edit";
 import Landing from "./components/landing";
 import Login from "./components/login";
 import Nav from "./components/nav";
@@ -15,6 +16,7 @@ function App() {
           <Route path="/landing" element={<><Nav/><Landing/></>} />
           <Route path="/add" element={<><Nav/><Add/></>} />
           <Route path="/register" element={<Register/>} />
+          <Route path="/edit:id" element={<Edit/>} />
         </Routes>
       </BrowserRouter>
     </div>

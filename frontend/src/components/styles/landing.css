@@ -1,0 +1,42 @@
+#search{
+    width: 80%;
+    height: 2.5rem;
+    padding-left: 15px;
+    position: relative;
+}
+.landing{
+    height: 100vh;
+    align-items: center;
+    gap: 50px;
+    background-image: url('https://www.tilingtextures.com/wp-content/uploads/2017/02/0001.jpg');
+}
+.ser-btn{
+    position: relative;
+    right: 25px;
+    background-color: lightgray;
+
+}
+.search{
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 33px;
+    width: 100%;
+}
+.tasks{
+    height: 200px;
+    border: 1px solid;
+    width: 80%;
+    padding: 25px;
+    justify-content: space-between;
+    background-color: white;
+}
+.note-div{
+    height: 200px;
+}
+
+.edit{
+    height: 2em;
+    width: 66px;
+    background-color: greenyellow;
+}

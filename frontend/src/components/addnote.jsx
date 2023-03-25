@@ -12,8 +12,9 @@ const Add =()=>{
     })
     const handleSubmit = async(e) =>{
         e.preventDefault()
-        if(add) return
+        
         try{
+            if(add) return
             setAdd(true)
             const user = JSON.parse(localStorage.getItem('user'))._id
             const {title, description} = formdata
@@ -21,7 +22,7 @@ const Add =()=>{
                 alert('please fill all the details')
                 return
             }
-            const response = await axios.post(`http://localhost:3000/task/${user}`, {
+            const response = await axios.post(`http://localhost:3000/task`, {
                 title,
                 description
             })

@@ -3,11 +3,17 @@ import HomeIcon from '@mui/icons-material/Home';
 import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const Nav = () =>{
     const nav = useNavigate()
     const handleAddnote = () =>[
         nav('/add')
     ]
+    const handleDelete = async()=>{
+        await axios.delete("http://localhost:3000/task")
+        nav('/landing')
+        window.location.reload()
+    }
     return (
         <div className="nav flex-row">
             <div className='flex-row'>
@@ -20,7 +26,7 @@ const Nav = () =>{
             </div>
             <div className='flex-row'>
                 <ClearIcon/>
-                <h3 className='but'>Delete All</h3>
+                <h3 className='but' onClick={handleDelete}>Delete All</h3>
             </div>
         </div>
     )

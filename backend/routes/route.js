@@ -173,4 +173,26 @@ router.delete('/task', async(req,res)=>{
     }
 })
 
+router.patch("/:id", async(req, res)=>{
+    const {title, description} = req.body
+    const data = await Task.find({_id:req.params.id})
+    if(data.length){
+        try{
+            const updatePartial = await Task.updateOne({_id:req.params.id}, {$set: {title, description}})
+            return res.status(204).json({
+                data
+            })
+        } catch(e){
+            return res.status(404).json({
+                error : e.message
+            })
+        }
+    }
+    else{
+        return res.status(404).json({
+            error : "There is no task with that id"
+        })
+    }
+})
+
 module.exports = router
