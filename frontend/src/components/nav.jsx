@@ -4,15 +4,18 @@ import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useState } from 'react';
 const Nav = () =>{
     const nav = useNavigate()
+    const [data, setData] = useState([])
     const handleAddnote = () =>[
         nav('/add')
     ]
     const handleDelete = async()=>{
         await axios.delete("https://note-taker-ud8w.onrender.com/task")
-        nav('/landing')
-        window.location.reload()
+        setData([])
+        alert('data deleted successfully')
+        nav('/add')
     }
     const handlelogout = () =>{
         localStorage.removeItem('jwt')
@@ -24,7 +27,7 @@ const Nav = () =>{
             <div className='flex-row first'>
                 <div className='flex-row'>
                     <HomeIcon/>
-                    <h3 className='but'>Home</h3>
+                    <h3 className='but' onClick={()=>nav('/landing')}>Home</h3>
                 </div>
                 <div className='flex-row'>
                     <AddIcon/>
