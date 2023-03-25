@@ -22,7 +22,7 @@ const Add =()=>{
                 alert('please fill all the details')
                 return
             }
-            const response = await axios.post(`http://localhost:3000/task`, {
+            const response = await axios.post(`https://note-taker-ud8w.onrender.com/task`, {
                 title,
                 description
             })

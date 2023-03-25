@@ -10,7 +10,7 @@ const Landing = () => {
 
   useEffect(() => {
     const getnote = async () => {
-      await fetch("http://localhost:3000/task", {
+      await fetch("https://note-taker-ud8w.onrender.com/task", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
@@ -22,7 +22,7 @@ const Landing = () => {
         })
         .catch((e) => console.log(e));
     };
-    if (search == "") {
+    if (search === "") {
       getnote();
     } else {
       handleSearch();

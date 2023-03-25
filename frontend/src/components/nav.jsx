@@ -10,14 +10,14 @@ const Nav = () =>{
         nav('/add')
     ]
     const handleDelete = async()=>{
-        await axios.delete("http://localhost:3000/task")
+        await axios.delete("https://note-taker-ud8w.onrender.com/task")
         nav('/landing')
         window.location.reload()
     }
     const handlelogout = () =>{
         localStorage.removeItem('jwt')
         localStorage.removeItem('user')
-        nav('/')
+        window.location.replace('/')
     }
     return (
         <div className="nav flex-row">

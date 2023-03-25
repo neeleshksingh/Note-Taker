@@ -11,13 +11,13 @@ const Register = () =>{
         confirmpassword: ""
     })
     const [error, setError] = useState(false)
-    const [passerror, setPassError] = useState(false)
+    //const [passerror, setPassError] = useState(false)
     const register = async() =>{
         const verify = val.password.length !== 0 && val.confirmpassword.length !== 0 && val.email.length !== 0
         if(verify){
             if(val.password === val.confirmpassword){
                 try{
-                    const data = await axios.post("http://localhost:3000/register", val)
+                    const data = await axios.post("https://note-taker-ud8w.onrender.com/register", val)
                     if(data.data.status === "signup failed"){
                         alert(data.data.error)
                     } else{
@@ -38,7 +38,6 @@ const Register = () =>{
         
         else{
             setError(true)
-            setPassError(true)
         }
     }
     return(

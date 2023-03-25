@@ -8,18 +8,19 @@ const Login = () =>{
     const [error, setError] = useState('')
     const nav = useNavigate()
     const handleLogin = async()=>{
+        if(!data.email || !data.password){
+            setError('All fields are necessary')
+            return
+        }
         try{
             if(data.email && data.password){
-                const user = await axios.post('http://localhost:3000/login', data)
+                const user = await axios.post('https://note-taker-ud8w.onrender.com/login', data)
                 if(user.data.token){
                     localStorage.setItem('jwt', data.token)
                     localStorage.setItem('user', JSON.stringify(user.data.user))
                     setData({email:'', password:''})
                     nav('/landing')
                 }
-            }
-            else{
-                setError("All fields required")
             }
         } catch(e){
             setError('User not found')
@@ -41,6 +42,9 @@ const Login = () =>{
                         <label htmlFor="password">Password</label>
                         <input type="password" placeholder='Password' className='inp' onChange={(e)=>setData({...data, password:e.target.value})} value={data.password}/>
                     </div>
+                    {error && <p className='error'>
+                        {error}
+                    </p>}
                     <div>
                         <input type="checkbox" />Remember Me
                     </div>

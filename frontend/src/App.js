@@ -16,7 +16,7 @@ function App() {
           <Route path="/landing" element={<><Nav/><Landing/></>} />
           <Route path="/add" element={<><Nav/><Add/></>} />
           <Route path="/register" element={<Register/>} />
-          <Route path="/edit:id" element={<Edit/>} />
+          <Route path="/edit:id" element={<><Nav/><Edit/></>} />
         </Routes>
       </BrowserRouter>
     </div>
