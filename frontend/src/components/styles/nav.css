@@ -6,7 +6,7 @@
     color: white;
     align-items: center;
     padding: 20px;
-    gap: 25px;
+    justify-content: space-between;
 }
 .but{
     cursor: pointer;
@@ -40,4 +40,14 @@ textarea{
     height: 2.5rem;
     background-color: rgb(4, 177, 234);
     color: white;
+}
+.first{
+    gap: 25px;
+}
+.logout{
+    height: 2em;
+    width: 50px;
+}
+.error{
+    color: red;
 }

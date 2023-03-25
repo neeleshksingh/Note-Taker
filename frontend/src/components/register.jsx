@@ -14,24 +14,28 @@ const Register = () =>{
     const [passerror, setPassError] = useState(false)
     const register = async() =>{
         const verify = val.password.length !== 0 && val.confirmpassword.length !== 0 && val.email.length !== 0
-        if(val.password === val.confirmpassword && verify){
-            try{
-                const data = await axios.post("http://localhost:3000/register", val)
-                if(data.data.status === "signup failed"){
-                    alert(data.data.error)
-                } else{
-                    localStorage.setItem('userdetails', JSON.stringify(data.data.token))
-                    setval({
-                        email : "",
-                        password : "",
-                        confirmpassword : ""
-                    })
-                    nav('/')
+        if(verify){
+            if(val.password === val.confirmpassword){
+                try{
+                    const data = await axios.post("http://localhost:3000/register", val)
+                    if(data.data.status === "signup failed"){
+                        alert(data.data.error)
+                    } else{
+                        localStorage.setItem('userdetails', JSON.stringify(data.data.userInfo))
+                        localStorage.setItem('token', JSON.stringify(data.data.token))
+                        setval({
+                            email : "",
+                            password : "",
+                            confirmpassword : ""
+                        })
+                        nav('/')
+                    }
+                }catch(e){
+                    alert('Userid Exist')
                 }
-            }catch(e){
-                alert('Userid Exist')
             }
         }
+        
         else{
             setError(true)
             setPassError(true)
@@ -43,8 +47,11 @@ const Register = () =>{
                 <h1>Sign Up</h1>
                 <div className='singup-con flex-col'>
                     <input type="text" placeholder='Email' className='inp' onChange={(e)=>setval({...val,email:e.target.value})} value={val.email}/>
+                    {error && val.email.length === 0 && <p className='error'>Email is required</p>}
                     <input type="password" placeholder='Password' className='inp' onChange={(e)=>setval({...val,password:e.target.value})} value={val.password}/>
+                    {error && val.password.length === 0 && <p className='error'>Password is required</p>}
                     <input type="text" placeholder='Repeat password' className='inp' onChange={(e)=>setval({...val,confirmpassword:e.target.value})} value={val.confirmpassword}/>
+                    {error && val.confirmpassword.length === 0 && <p className='error'>Confirm password is required</p>}
                     <button id='continue' onClick={register}>Continue</button>
                 </div>
             </div>

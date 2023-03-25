@@ -12,6 +12,7 @@ const Login = () =>{
             if(data.email && data.password){
                 const user = await axios.post('http://localhost:3000/login', data)
                 if(user.data.token){
+                    localStorage.setItem('jwt', data.token)
                     localStorage.setItem('user', JSON.stringify(user.data.user))
                     setData({email:'', password:''})
                     nav('/landing')

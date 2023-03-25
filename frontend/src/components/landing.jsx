@@ -1,6 +1,5 @@
 import "../components/styles/landing.css";
 import SearchIcon from "@mui/icons-material/Search";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -8,9 +7,6 @@ const Landing = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
-  const handleDetail = (id) => {
-    navigate("/note/" + id);
-  };
 
   useEffect(() => {
     const getnote = async () => {
@@ -43,8 +39,8 @@ const Landing = () => {
   return (
     <div className="landing flex-col">
       <div className="search flex-row">
-        <input type="text" placeholder="search" id="search" />
-        <button className="ser-btn">
+        <input type="text" placeholder="search" id="search" value={search} onChange={(e)=>setSearch(e.target.value)} />
+        <button className="ser-btn" onClick={handleSearch}>
           <SearchIcon />
         </button>
       </div>
@@ -64,7 +60,6 @@ const Landing = () => {
             );
           })}
       </div>
-    
   );
 };
 export default Landing;

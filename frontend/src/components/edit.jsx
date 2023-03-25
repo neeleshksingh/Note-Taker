@@ -1,5 +1,5 @@
 import axios from "axios"
-
+import '../components/styles/nav.css'
 const Edit = () =>{
 
     axios.patch("")
