@@ -3,7 +3,9 @@ const connection = require('./connection/connection')
 connection()
 const task = require('./routes/route')
 const app = express()
+const cors = require('cors')
 
+app.use(cors())
 app.use(task)
 
 app.get("*", (req,res)=>{

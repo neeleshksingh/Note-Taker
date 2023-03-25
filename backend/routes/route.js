@@ -98,6 +98,79 @@ router.post('/login', async (req,res)=>{
     }
 })
 
+//Post api for task
 
+router.post("/task", async(req,res)=>{
+    try{
+       const {title, description, user} = req.body
+       if(title && description){
+        const data = await Task.create({
+            title,
+            description,
+            user
+        })
+        return res.status(200).json({
+            status : "success",
+            data
+        })
+       }
+       else{
+        return res.status(400).json({
+            status : "failed",
+            message : "details are missing"
+        })
+       }
+    } catch(e){
+        return res.status(404).json({
+            error : e.message
+        })
+    }
+})
+
+//Get Api for task
+
+router.get("/task", async(req,res)=>{
+    try{
+        const data = await Task.find()
+        if(data){
+            return res.status(200).json({
+                status : "success",
+                data
+            })
+        }
+        else{
+            return res.status(400).json({
+                error : "not found"
+            })
+        }
+    } catch(e){
+        return res.status(404).json({
+            error : e.message
+        })
+    }
+})
+
+//Delete api for deleting task
+
+router.delete('/task', async(req,res)=>{
+    try{
+        const data = await Task.deleteMany()
+        if(data){
+            return res.status(200).json({
+                status: "success",
+                data
+            })
+        }
+        else{
+            return res.status(400).json({
+                status : "failed"
+            })
+        }
+    }catch(e){
+        return res.status(404).json({
+            error : e.message
+        })
+    }
+})
 
 module.exports = router

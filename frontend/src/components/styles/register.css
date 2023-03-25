@@ -1,0 +1,27 @@
+.reg-con{
+    height: 100vh;
+    background-color: coral;
+    justify-content: center;
+    align-items: center;
+}
+
+.register{
+    border: none;
+    height: 500px;
+    width: 35%;
+    background-color: white;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    border-radius: 15px;
+}
+.singup-con{
+    width: 100%;
+    justify-content: space-between;
+    height: 100vh;
+}
+#continue{
+    height: 2.5rem;
+    background-color: coral;
+    color: white;
+}
